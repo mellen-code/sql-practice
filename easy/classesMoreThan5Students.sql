@@ -47,8 +47,22 @@
 -- - Biology has 1 student, so we do not include it.
 -- - Computer has 1 student, so we do not include it.
 
+-- with HAVING:
 SELECT
 class
 from Courses
 GROUP BY class
 HAVING count(student) >= 5
+
+-- without HAVING, using CTE:
+with counts as (
+SELECT
+class,
+count(student) as class_ct
+FROM Courses
+GROUP BY class)
+
+SELECT
+class
+from counts
+where class_ct >= 5
