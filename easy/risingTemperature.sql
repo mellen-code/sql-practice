@@ -43,9 +43,9 @@
 -- In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
 -- In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 
-select
+SELECT
 t1.id
-from
+FROM
 Weather t1, Weather t2
-where datediff(DAY, t2.recordDate, t1.recordDate) = 1
-and t1.temperature > t2.temperature
+WHERE DATEDIFF(t1.recordDate, t2.recordDate) = 1
+AND t1.temperature > t2.temperature
